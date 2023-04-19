@@ -1,10 +1,10 @@
-import { createLogger, LoggerSettings, LoggerType } from './logger';
+import { createLogger, LoggerSettings, LoggerContext, LoggerType } from './logger';
 
 const loggerSetting: LoggerSettings = {
   label: 'LoggerLabel'
 };
 
-const logger = createLogger(loggerSetting, LoggerType.CONSOLE);
+const logger: LoggerContext = createLogger(loggerSetting, LoggerType.CONSOLE);
 
 function main() {
   logger.debug('Hello World Debug!');

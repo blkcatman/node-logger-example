@@ -1,4 +1,4 @@
-import type { LoggerSettings } from './logger';
+import type { LoggerSettings, LoggerContext } from './logger';
 
 import { createConsoleLogger } from './ConsoleLogger';
 import { createDummyLogger } from './DummyLogger';
@@ -9,7 +9,7 @@ const LoggerType = {
 } as const;
 type LoggerType = typeof LoggerType[keyof typeof LoggerType];
 
-const createLogger = (loggerSettings: LoggerSettings, type: LoggerType = LoggerType.CONSOLE) => {
+const createLogger = (loggerSettings: LoggerSettings, type: LoggerType = LoggerType.CONSOLE): LoggerContext => {
   if (type === LoggerType.CONSOLE) {
     return createConsoleLogger(loggerSettings);
   } else if (type === LoggerType.DUMMY) {
@@ -19,4 +19,4 @@ const createLogger = (loggerSettings: LoggerSettings, type: LoggerType = LoggerT
   }
 }
 
-export { LoggerSettings, LoggerType, createLogger };
+export { LoggerSettings, LoggerContext, LoggerType, createLogger };
